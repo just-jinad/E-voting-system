@@ -17,7 +17,7 @@ const Nav = () => {
           </a>
           <div class="flex items-center space-x-6 rtl:space-x-reverse">
 
-              <Link  class="text-sm  text-gray-500 dark:text-white hover:underline" href={'/homepage'}>
+              <Link  class="text-sm  text-gray-500 dark:text-white hover:underline" href={'/registration'}>
             Sign up
               </Link>
           
