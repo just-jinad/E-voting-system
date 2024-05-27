@@ -1,11 +1,14 @@
+"use client";
 import Image from 'next/image'
 import Nav from '../components/Nav';
+import { TextInput } from 'flowbite-react';
+
 
 const Page = () => {
   return (
     <>
     <Nav/>
-      <div className="flex flex-col lg:flex-row mt-24 justify-center items-center lg:items-start gap-4">
+      <div className="flex flex-col lg:flex-row mt-24 hidden md:flex justify-center items-center lg:items-start gap-4">
         <div className="mb-10 lg:mb-0">
           <Image
             src="/Figure.png"
@@ -14,14 +17,15 @@ const Page = () => {
             alt="Picture of the author"
           />
         </div>
-
+      
         <div className="sectionTwo max-w-lg lg:max-w-full p-5">
-          <h4 className="text-xl font-bold text-green-600">Registration Form</h4>
+          <h4 className="text-xl font-bold text-green-600 text-center mb-3">Registration Form</h4>
 
           <form className="flex flex-col gap-4">
             <label className="font-bold text-green-400" htmlFor="fullName">Full Name</label>
             <input id="fullName" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
 
+        
             <label className="font-bold text-green-400" htmlFor="dob">DOB</label>
             <input id="dob" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
 
