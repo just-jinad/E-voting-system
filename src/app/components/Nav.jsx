@@ -17,12 +17,12 @@ const Nav = () => {
           </a>
           <div class="flex items-center space-x-6 rtl:space-x-reverse">
 
-              <Link  class="text-sm  text-gray-500 dark:text-white hover:underline" href={'/registration'}>
+              <Link  class="text-sm  text-gray-500 dark:text-white hover:underline" href="/registration">
             Sign up
               </Link>
           
         
-              <Link href={'/login'}  class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
+              <Link href="/login"  class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
               Login
               </Link>
           

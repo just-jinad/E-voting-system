@@ -1,63 +1,92 @@
-"use client";
-import Image from 'next/image'
-import Nav from '../components/Nav';
-import { TextInput } from 'flowbite-react';
-
+"use client"
+import React, { useState } from 'react';
+import Image from 'next/image';
 
 const Page = () => {
+  const [formValues, setFormValues] = useState({
+    fullName: '',
+    dob: '',
+    address: '',
+    governmentID: '',
+    email: '',
+    phoneNumber: '',
+    userName: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const [submittedData, setSubmittedData] = useState([]);
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormValues({ ...formValues, [id]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmittedData([...submittedData, formValues]);
+    console.log([...submittedData, formValues]);
+    setFormValues({
+      fullName: '',
+      dob: '',
+      address: '',
+      governmentID: '',
+      email: '',
+      phoneNumber: '',
+      userName: '',
+      password: '',
+      confirmPassword: '',
+    });
+  };
+
   return (
     <>
-    <Nav/>
-      <div className="flex flex-col lg:flex-row mt-24 hidden md:flex justify-center items-center lg:items-start gap-4">
-        <div className="mb-10 lg:mb-0">
-          <Image
-            src="/Figure.png"
-            width={200}
-            height={200}
-            alt="Picture of the author"
-          />
+      <div>
+        {/* Navbar */}
+        <div className='p-5'>
+          <p className='text-[#2A9D8F] text-3xl'>E-ChoiceNG</p>
         </div>
-      
-        <div className="sectionTwo max-w-lg lg:max-w-full p-5">
-          <h4 className="text-xl font-bold text-green-600 text-center mb-3">Registration Form</h4>
-
-          <form className="flex flex-col gap-4">
-            <label className="font-bold text-green-400" htmlFor="fullName">Full Name</label>
-            <input id="fullName" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
         
-            <label className="font-bold text-green-400" htmlFor="dob">DOB</label>
-            <input id="dob" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="address">Address</label>
-            <input id="address" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="govId">Government ID</label>
-            <input id="govId" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="email">Email</label>
-            <input id="email" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="phone">Phone Number</label>
-            <input id="phone" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="username">Username</label>
-            <input id="username" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="password">Password</label>
-            <input id="password" className="border p-1 rounded-xl w-full lg:w-96" type="password" />
-
-            <label className="font-bold text-green-400" htmlFor="confirmPassword">Confirm Password</label>
-            <input id="confirmPassword" className="border p-1 rounded-xl w-full lg:w-96" type="password" />
-
-            <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl">
-              Submit
-            </button>
+        {/* Form */}
+        <div className='md:w-2/6 p-5 mx-auto mt-20'>
+          <p className='font-semibold text-2xl text-center m-3'>Create an account</p>
+          
+          {/* Form Fields */}
+          <form onSubmit={handleSubmit}>
+            {[
+              { label: 'Full Name', id: 'fullName', type: 'text' },
+              { label: 'Date of Birth', id: 'dob', type: 'date' },
+              { label: 'Address', id: 'address', type: 'text' },
+              { label: 'Government ID', id: 'governmentID', type: 'text' },
+              { label: 'E-Mail', id: 'email', type: 'email' },
+              { label: 'Phone Number', id: 'phoneNumber', type: 'tel' },
+              { label: 'User Name', id: 'userName', type: 'text' },
+              { label: 'Password', id: 'password', type: 'password' },
+              { label: 'Confirm Password', id: 'confirmPassword', type: 'password' },
+            ].map((field, index) => (
+              <div key={index} className="relative mt-5">
+                <input 
+                  type={field.type} 
+                  id={field.id} 
+                  value={formValues[field.id]} 
+                  onChange={handleChange}
+                  className="block border-gray-300 border px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded border-1 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
+                  placeholder=" " 
+                />
+                <label 
+                  htmlFor={field.id} 
+                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-[#2A9D8F] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                >
+                  {field.label}
+                </label>
+              </div>
+            ))}
+            <button type="submit" className='bg-[#055052] p-2 mt-6 rounded text-white w-full'>Create Account</button>
           </form>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Page;
