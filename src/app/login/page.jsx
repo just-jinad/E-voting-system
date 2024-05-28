@@ -1,120 +1,94 @@
-"use client";
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Nav from "../components/Nav";
-import axios from "axios";
+"use client"
+import React, { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
-const Page = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+const SignInPage = () => {
+  const [formValues, setFormValues] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setError("");
+  const [captchaVerified, setCaptchaVerified] = useState(false);
 
-    // Basic validation
-    const emailOrPhoneRegex = /^(?:\d{10}|\S+@\S+\.\S+)$/; // Simple regex for email or 10-digit phone number
-    if (!emailOrPhoneRegex.test(email)) {
-      setError("Please enter a valid email or phone number");
-      return;
-    }
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long");
-      return;
-    }
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormValues({ ...formValues, [id]: value });
+  };
 
-    try {
-      const response = await axios.post(
-        "https://e-voting-system-server.onrender.com/api/users/login",
-        { email, password },
-        { headers: { "Content-Type": "appli cation/json" } }
-      );
+  const handleCaptchaChange = (value) => {
+    setCaptchaVerified(!!value);
+  };
 
-      const data = response.data;
-      console.log(response);
-    
-      if (data.success) {
-    
-      } else {
-        setError(data.message || "Login failed");
-      }
-    } catch (err) {
-      console.log(err);
-      setError(err.response?.data?.message || "An error occurred during login");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (captchaVerified) {
+      console.log('Form submitted:', formValues);
+      // Further processing like sending data to server or handling login logic
+    } else {
+      alert("Please verify that you are not a robot.");
     }
   };
 
   return (
-    <>
-      <Nav />
-      <div className="flex flex-col lg:flex-row mt-24 justify-center lg:items-start gap-4">
-        <div className="mb-10 mt-5 hidden md:flex lg:mb-0">
-          <Image
-            src="/login 1.png"
-            width={300}
-            height={300}
-            alt="Picture of the author"
-          />
-        </div>
+    <div>
+      {/* Navbar */}
+      <div className='p-5'>
+        <p className='text-[#2A9D8F] text-3xl'>E-ChoiceNG</p>
+      </div>
 
-        <div className="sectionTwo max-w-lg lg:max-w-full p-5">
-          {/* <h4 className="text-xl font-bold text-green-600 text-center mb-3">Login</h4> */}
-
-          {error && <div className="text-red-500 mb-4">{error}</div>}
-
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <label className="font-bold text-green-400" htmlFor="emailOrPhone">
-              Email or Phone
-            </label>
-            <input
-              id="emailOrPhone"
-              name="emailOrPhone"
-              className="border p-2 rounded-xl w-full"
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+      {/* Sign-in Form */}
+      <div className='md:w-2/6 p-5 mx-auto mt-20'>
+        <p className='font-semibold text-2xl text-center m-3'>Sign In</p>
+        
+        <form onSubmit={handleSubmit}>
+          <div className="relative mt-5">
+            <input 
+              type="email" 
+              id="email" 
+              value={formValues.email} 
+              onChange={handleChange}
+              className="block border-gray-300 border px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded border-1 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
+              placeholder=" " 
             />
+            <label 
+              htmlFor="email" 
+              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-[#2A9D8F] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+            >
+              E-Mail
+            </label>
+          </div>
 
-            <label className="font-bold text-green-400" htmlFor="password">
+          <div className="relative mt-5">
+            <input 
+              type="password" 
+              id="password" 
+              value={formValues.password} 
+              onChange={handleChange}
+              className="block border-gray-300 border px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded border-1 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
+              placeholder=" " 
+            />
+            <label 
+              htmlFor="password" 
+              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-[#2A9D8F] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+            >
               Password
             </label>
-            <input
-              id="password"
-              name="password"
-              className="border p-2 rounded-xl w-full"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
+          </div>
+
+          <div className="mt-5">
+            <ReCAPTCHA
+              sitekey="6LfEPeopAAAAAGiEcNXKyY-922faWvqjbcFdo-6j"
+              onChange={handleCaptchaChange}
             />
+          </div>
 
-            <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
-              {" "}
-              <Link href={"/"} className="text-green-500 hover:underline">
-                Forgot password?
-              </Link>
-              <Link
-                href={"/registration"}
-                className="text-green-500 hover:underline"
-              >
-                Not a user? Register Now
-              </Link>
-            </div>
-
-            <button
-              type="submit"
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl"
-            >
-              Login
-            </button>
-          </form>
-        </div>
+          <button type="submit" className='bg-[#055052] p-2 mt-6 rounded text-white w-full'>
+            Sign In
+          </button>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Page;
+export default SignInPage;
