@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image'
 import Nav from '../components/Nav';
-import { TextInput } from 'flowbite-react';
+import { useState } from 'react';
 
 
 const Page = () => {
