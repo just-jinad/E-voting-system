@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../components/homepage/Navbar';
 import Image from 'next/image';
+import { FooterTitle } from 'flowbite-react';
+import Footer from '../components/homepage/Footer';
 
 const Page = () => {
     const candidatesList = [
@@ -72,6 +74,7 @@ const Page = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </>
     );
 };
