@@ -22,7 +22,7 @@ const Page = () => {
         setErrorMessage(''); // Clear error message on successful response
         setSuccessMessage('Login successful!'); // Set success message
         setTimeout(() => {
-          router.push('/candidates'); // Route to /candidates on successful login
+          router.push('/votingpanel'); // Route to /candidates on successful login
         }, 1000); // Delay to show success message
       })
       .catch((err) => {

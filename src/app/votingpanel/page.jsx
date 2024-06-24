@@ -18,7 +18,7 @@ const Page = () => {
     return (
         <>
             <Navbar />
-                <div className=" mr-12 ml-12 "> 
+                <div className=" mr-12 ml-12 h-screen"> 
                 <div className="mb-5 mt-20">
                 <h3 className="font-bold text-xl text-start">Available Elections</h3>
                 <p className="text-sm text-start">This are Currently the Lists of Available Elections</p>
@@ -94,7 +94,10 @@ const Page = () => {
                                 onClick={() => toggleAccordion(2)}
                                 aria-controls="accordion-flush-body-2"
                             >
-                                <span>Is there a Figma file available?</span>
+                                <span>  <div className="flex justify-between gap-3">
+                                    <p className="text-xl ">Upcoming Election</p>
+                                    <p className="text-sm mt-2 text-yellow-500">Governorship</p>
+                                </div> </span>
                                 <svg
                                     className={`w-3 h-3 transform ${openAccordion === 2 ? 'rotate-180' : ''} shrink-0`}
                                     aria-hidden="true"
@@ -144,7 +147,11 @@ const Page = () => {
                                 onClick={() => toggleAccordion(3)}
                                 aria-controls="accordion-flush-body-3"
                             >
-                                <span>What are the differences between Flowbite and Tailwind UI?</span>
+                                <span>  <div className="flex justify-between gap-3">
+                                    <p className="text-xl ">Upcoming Election</p>
+                                    <p className="text-sm mt-2 text-yellow-500">Local Government</p>
+                           
+                                </div> </span>
                                 <svg
                                     className={`w-3 h-3 transform ${openAccordion === 3 ? 'rotate-180' : ''} shrink-0`}
                                     aria-hidden="true"
