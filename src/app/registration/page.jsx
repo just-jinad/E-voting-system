@@ -1,97 +1,71 @@
 "use client";
-import Image from 'next/image'
-import Nav from '../components/Nav';
+import Link from 'next/link';
 import { useState } from 'react';
 
-
 const Page = () => {
-  const [formValues, setFormValues] = useState({
-    fullName: '',
-    dob: '',
-    address: '',
-    governmentID: '',
-    email: '',
-    phoneNumber: '',
-    userName: '',
-    password: '',
-    confirmPassword: '',
-  });
+  const [isOpen, setIsOpen] = useState(false);
 
-  const [submittedData, setSubmittedData] = useState([]);
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormValues({ ...formValues, [id]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmittedData([...submittedData, formValues]);
-    console.log([...submittedData, formValues]);
-    setFormValues({
-      fullName: '',
-      dob: '',
-      address: '',
-      governmentID: '',
-      email: '',
-      phoneNumber: '',
-      userName: '',
-      password: '',
-      confirmPassword: '',
-    });
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
     <>
-    <Nav/>
-      <div className="flex flex-col lg:flex-row mt-24 hidden md:flex justify-center items-center lg:items-start gap-4">
-        <div className="mb-10 lg:mb-0">
-          <Image
-            src="/Figure.png"
-            width={200}
-            height={200}
-            alt="Picture of the author"
-          />
-        </div>
-      
-        <div className="sectionTwo max-w-lg lg:max-w-full p-5">
-          <h4 className="text-xl font-bold text-green-600 text-center mb-3">Registration Form</h4>
-
-          <form className="flex flex-col gap-4">
-            <label className="font-bold text-green-400" htmlFor="fullName">Full Name</label>
-            <input id="fullName" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-        
-            <label className="font-bold text-green-400" htmlFor="dob">DOB</label>
-            <input id="dob" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="address">Address</label>
-            <input id="address" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="govId">Government ID</label>
-            <input id="govId" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="email">Email</label>
-            <input id="email" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="phone">Phone Number</label>
-            <input id="phone" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="username">Username</label>
-            <input id="username" className="border p-1 rounded-xl w-full lg:w-96" type="text" />
-
-            <label className="font-bold text-green-400" htmlFor="password">Password</label>
-            <input id="password" className="border p-1 rounded-xl w-full lg:w-96" type="password" />
-
-            <label className="font-bold text-green-400" htmlFor="confirmPassword">Confirm Password</label>
-            <input id="confirmPassword" className="border p-1 rounded-xl w-full lg:w-96" type="password" />
-
-            <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl">
-              Submit
-            </button>
-          </form>
-        </div>
+      <div className='p-5'>
+        <p className='text-[#2A9D8F] text-3xl'>E-ChoiceNG</p>
       </div>
+      <div className=' md:w-2/6 p-5 mx-auto mt-20'>
+
+    <div className="m-1 relative ">
+    <div>
+    <p className='text-4xl font-semibold text-center'>Sign in</p>
+    </div>
+    <br />
+    <div>
+      <button
+        id="hs-dropdown-hover-event"
+        type="button"
+        className="w-full hs-dropdown-toggle py-3 justify-center px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+        onClick={toggleDropdown}
+      >
+        Identification Method
+        <svg
+          className={`hs-dropdown-open:rotate-180 size-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+
+      <div
+        className={`absolute left-0 top-full ${isOpen ? 'opacity-100' : 'opacity-0 hidden'} transition-[opacity,margin] duration-300 min-w-full  bg-white drop-shadow-md md p-2 `}
+        aria-labelledby="hs-dropdown-hover-event"
+      >
+        <Link
+          className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+          href="/nin"
+        >
+          NiN
+        </Link>
+        <Link
+          className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm focus:outline-none focus:bg-gray-100 "
+          href="/votersid"
+        >
+          Voters Card Id
+        </Link>
+       
+      </div>
+      </div>
+    </div>
+    </div>
     </>
   );
 };

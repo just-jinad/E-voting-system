@@ -31,7 +31,7 @@ const Footer = () => {
            
         </div>
         <hr className="text-[#7F56D9] bg-[#7F56D9] my-6 " />
-        <span class="block text-sm text-gray-500 dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+        <span class="block text-sm text-gray-500 dark:text-gray-400">© 2023 E-ChoiceNG's. All Rights Reserved.</span>
     </div>
 </footer>
 
