@@ -36,16 +36,12 @@ const Navbar = () => {
               <Link href="/support" className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Support</Link>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">About Us</a>
+              <a href="#" className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Log Out</a>
             </li>
-            <li>
-              <Link href='/login'>
-                <p className="block py-2 px-3 rounded md:p-0 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">Log In</p>
-              </Link>
-            </li>
+
             <li>
               <Link href='/registration'>
-                <p className="block py-2 px-3 rounded md:p-1 text-white bg-[#055052] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">Sign Up</p>
+                <p className="block py-2 px-3 rounded md:p-1 text-white bg-[#055052] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">Log In</p>
               </Link>
             </li>
           </ul>

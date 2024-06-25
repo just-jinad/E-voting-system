@@ -1,10 +1,28 @@
-import React from 'react';
+"use client"
+import React, { useEffect } from 'react';
 import Navbar from '../components/homepage/Navbar';
 import Image from 'next/image';
-import { FooterTitle } from 'flowbite-react';
 import Footer from '../components/homepage/Footer';
+import axios from 'axios';
 
 const Page = () => {
+  const url = "https://e-voting-system-server.onrender.com/api/parties/parties"
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url, {
+          withCredentials: true
+        });
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  
     const candidatesList = [
         {
             name: "Tinibu Albubarker",
