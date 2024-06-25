@@ -9,10 +9,16 @@ const Page = () => {
   const url = "https://e-voting-system-server.onrender.com/api/parties/parties";
 
   useEffect(() => {
+   const token = localStorage.getItem('userToken')
     const fetchData = async () => {
       try {
-        const response = await axios.get(url, {
-          withCredentials: true
+        console.log(token);
+        const response = await axios.get(url,{
+            headers: {
+        Authorization: `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
         });
         console.log(response);
       } catch (error) {
@@ -24,27 +30,99 @@ const Page = () => {
   }, []);
 
   const candidatesList = [
-    {
-      name: "Tinibu Albubarker",
-      politicalParty: "apc",
-      icon: "/africancongress.jpeg",
-      image: "/image 15 (1).svg",
-      numberOfVoters: []
-    },
-    {
-      name: "Bola Ahamed Tinubu",
-      politicalParty: "African Congress",
-      icon: "/africancongress.jpeg",
-      image: "/image 15 (1).svg",
-      numberOfVoters: []
-    },
-    {
-      name: "Candidate Name",
-      politicalParty: "Party Name",
-      icon: "/africancongress.jpeg",
-      image: "/image 15 (1).svg",
-      numberOfVoters: []
-    },
+    
+        {
+          name: "All Progressives Congress (APC)",
+          description: "The ruling party in Nigeria, founded in 2013. It advocates for progressivism, social democracy, and economic populism.",
+          candidate: "Bola Ahmed Tinubu",
+          image:"/image 15.svg",
+          icon:"/party_logo/APC-LOGO-17-4-13.jpg"
+        },
+        {
+          name: "People's Democratic Party (PDP)",
+          description: "Established in 1998, the PDP is one of the dominant parties in Nigeria, with a centrist ideology focused on social democracy and liberal policies.",
+          candidate: "Atiku Abubakar",
+          image:"/Candidates/Atiku_Abubakar-2010_(cropped).jpg",
+          icon:"/icons/Logo_of_the_Peoples_Democratic_Party_(Nigeria).png"
+        },
+        {
+          name: "Labour Party (LP)",
+          description: "The Labour Party emphasizes social justice, workers' rights, and egalitarianism. It advocates for labor issues and the Nigerian workforce.",
+          candidate: "Peter Obi",
+          image:"/icons/peter obi.jpeg",
+          icon:"/icons/labour party.png"
+        },
+        {
+          name: "All Progressives Grand Alliance (APGA)",
+          description: "Founded in 2002, APGA focuses on nationalism, decentralization of power, and restructuring the nation, especially influential in southeastern Nigeria.",
+          candidate: "Peter Umeadi",
+          image:"",
+          icon:""
+        },
+        {
+          name: "Social Democratic Party (SDP)",
+          description: "Promotes social democracy and advocates for progressive policies and social welfare programs.",
+          candidate: "Adewole Adebayo",
+          image:"",
+          icon:""
+        },
+        {
+          name: "New Nigeria People's Party (NNPP)",
+          description: "Provides an alternative to the established parties, focusing on good governance, transparency, and socio-economic development.",
+          candidate: "Rabiu Kwankwaso",
+          image:"",
+          icon:""
+        },
+        {
+          name: "African Democratic Congress (ADC)",
+          description: "Formed in 2006, the ADC advocates for democracy, good governance, and socio-economic development, aiming to address issues like corruption and poverty.",
+          candidate: "Kachikwu Dumebi",
+          image:"",
+          icon:""
+        },
+        {
+          name: "Young Progressive Party (YPP)",
+          description: "Established in 2017, the YPP focuses on youth empowerment, good governance, and leveraging technology for economic growth, involving young Nigerians in the political process.",
+          candidate: "Malik Ado-Ibrahim",
+          image:"/party_logo/APC-LOGO-17-4-13.jpg",
+          icon:""
+        },
+        {
+          name: "African Action Congress (AAC)",
+          description: "Created in 2018 by Omoyele Sowore, the AAC advocates for social democracy, progressivism, and participatory democracy, with a focus on radical change and activism.",
+          candidate: "Omoyele Sowore",
+          image:"",
+          icon:""
+        },
+        {
+          name: "Action Democratic Party (ADP)",
+          description: "Formed in 2017, the ADP champions good governance, transparency, and accountability, aiming to address Nigeria's socio-economic challenges through inclusive policies.",
+          candidate: "Sani Yabagi Yusuf",
+          image:"",
+          icon:""
+        }
+      
+    // {
+    //   name: "Tinibu Albubarker",
+    //   politicalParty: "apc",
+    //   icon: "/africancongress.jpeg",
+    //   image: "/image 15 (1).svg",
+    //   numberOfVoters: []
+    // },
+    // {
+    //   name: "Bola Ahamed Tinubu",
+    //   politicalParty: "African Congress",
+    //   icon: "/africancongress.jpeg",
+    //   image: "/image 15 (1).svg",
+    //   numberOfVoters: []
+    // },
+    // {
+    //   name: "Candidate Name",
+    //   politicalParty: "Party Name",
+    //   icon: "/africancongress.jpeg",
+    //   image: "/image 15 (1).svg",
+    //   numberOfVoters: []
+    // },
   ];
 
   return (
@@ -79,8 +157,8 @@ const Page = () => {
                     <Image className='top-0' width={80} height={80} src={details.icon} alt={`${details.politicalParty} icon`} />
                     <div className="mt-40 mb-6 block font-sans tracking-normal text-white">
                       <div className='text-start'>
-                        <p className='text-xl'>{details.name}</p>
-                        <p>President Federal Republic Of Nigeria</p>
+                        <p className='text-xl'>{details.candidate}</p>
+                        <p>{details.name}</p>
                         <Image width={50} height={50} src="/icons/vote.svg" alt="vote icon" />
                       </div>
                     </div>

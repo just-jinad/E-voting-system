@@ -33,7 +33,7 @@ const Navbar = () => {
               <a href="#" className="block py-2 px-3 rounded md:p-0 dark:text-whit" aria-current="page">Home</a>
             </li>
             <li>
-              <Link href="/support" className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Support</Link>
+              <Link href="/suppport" className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Support</Link>
             </li>
             <li>
               <a href="#" className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Log Out</a>
