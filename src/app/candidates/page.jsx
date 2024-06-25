@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Navbar from '../components/homepage/Navbar';
 import Image from 'next/image';

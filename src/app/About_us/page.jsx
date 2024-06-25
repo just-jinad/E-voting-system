@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import Navbar from "../components/homepage/Navbar";
 import Footer from "../components/homepage/Footer";
+import Image from "next/image";
 
 const page = () => {
   return (
@@ -56,12 +58,18 @@ const page = () => {
               href="#"
               className="block max-w-sm p-6 bg-white rounded-lg shadow hover:bg-gray-100 dark:hover:bg-blue-200"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                Noteworthy technology acquisitions 2021
+               <Image
+              src={'/refresh-ccw.png'}
+              alt="icon"
+              width={20}
+              height={20}
+              />
+              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+                What are the requirements for winning the presidential election?
               </h5>
               <p className="font-normal text-gray-700 dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
+                Majority of votes nationwide. At least 25% of votes in
+                two-thirds of the states and the FCT.
               </p>
             </a>
           </div>
@@ -71,12 +79,17 @@ const page = () => {
               href="#"
               className="block max-w-sm p-6 bg-white rounded-lg shadow hover:bg-gray-100 dark:hover:bg-blue-200"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                Noteworthy technology acquisitions 2021
+                <Image
+              src={'/Icon (1).png'}
+              alt="icon"
+              width={20}
+              height={20}
+              />
+              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+                How often are governorship elections held?
               </h5>
               <p className="font-normal text-gray-700 dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
+                Every four years.
               </p>
             </a>
           </div>
@@ -86,12 +99,18 @@ const page = () => {
               href="#"
               className="block max-w-sm p-6 bg-white rounded-lg shadow hover:bg-gray-100 dark:hover:bg-blue-200"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                Noteworthy technology acquisitions 2021
+              <Image
+              src={'/Icon.png'}
+              alt="icon"
+              width={20}
+              height={20}
+              />
+              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+                What is the role of INEC?{" "}
               </h5>
               <p className="font-normal text-gray-700 dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
+                Organizes federal and state elections. Maintains voter registers
+                and regulates political parties.
               </p>
             </a>
           </div>
@@ -101,12 +120,18 @@ const page = () => {
               href="#"
               className="block max-w-sm p-6 bg-white rounded-lg shadow hover:bg-gray-100 dark:hover:bg-blue-200"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                Noteworthy technology acquisitions 2021
+               <Image
+              src={'/slash.png'}
+              alt="icon"
+              width={20}
+              height={20}
+              />
+              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+                What are the main election challenges in Nigeria?{" "}
               </h5>
               <p className="font-normal text-gray-700 dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
+                Electoral violence, logistics, fraud. Addressed by security
+                measures, logistical improvements, stricter laws.
               </p>
             </a>
           </div>
@@ -116,12 +141,18 @@ const page = () => {
               href="#"
               className="block max-w-sm p-6 bg-white rounded-lg shadow hover:bg-gray-100 dark:hover:bg-blue-200"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                Noteworthy technology acquisitions 2021
+                 <Image
+              src={'/Icon.png'}
+              alt="icon"
+              width={20}
+              height={20}
+              />
+              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+                How are local government elections conducted?{" "}
               </h5>
               <p className="font-normal text-gray-700 dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
+                State commissions manage elections. Parties select candidates;
+                simple majority voting.
               </p>
             </a>
           </div>
@@ -131,12 +162,18 @@ const page = () => {
               href="#"
               className="block max-w-sm p-6 bg-white rounded-lg shadow hover:bg-gray-100 dark:hover:bg-blue-200"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                Noteworthy technology acquisitions 2021
+                 <Image
+              src={'/Icon.png'}
+              alt="icon"
+              width={20}
+              height={20}
+              />
+              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+                What measures ensure election credibility?{" "}
               </h5>
               <p className="font-normal text-gray-700 dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
+                Electronic voting, biometric verification, election observers,
+                voter education.
               </p>
             </a>
           </div>
@@ -185,10 +222,13 @@ const page = () => {
             Subscribe
           </button>
         </form>
-        <p className="mt-3">We care about your data in our  <span className="underline text-start ">Privacy policy</span></p>
+        <p className="mt-3">
+          We care about your data in our{" "}
+          <span className="underline text-start ">Privacy policy</span>
+        </p>
       </section>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };
