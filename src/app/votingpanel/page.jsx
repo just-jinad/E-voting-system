@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Navbar from "../components/homepage/Navbar";
 import Footer from "../components/homepage/Footer";
+import Link from "next/link";
+
 
 const Page = () => {
     const [openAccordion, setOpenAccordion] = useState(null);
@@ -43,7 +45,9 @@ const Page = () => {
                                 <div className="flex justify-between gap-3">
                                     <p className="text-2xl ">Current Election</p>
                                     <p className="text-sm mt-2 text-teal-500">Presidential Election</p>
+                                    <Link href={'/candidates'}>
                                     <p className="text-sm mt-2 text-teal-500">Vote</p>
+                                    </Link>
                                 </div>          
                                 <svg
                                     className={`w-3 h-3 transform ${openAccordion === 1 ? 'rotate-180' : ''} shrink-0`}
@@ -69,21 +73,9 @@ const Page = () => {
                         >
                             <div className="py-5 border-b border-gray-200 dark:border-gray-700">
                                 <p className="mb-2 text-gray-500 dark:text-gray-400">
-                                    Flowbite is an open-source library of interactive components
-                                    built on top of Tailwind CSS including buttons, dropdowns,
-                                    modals, navbars, and more.
+                                The presidential election in Nigeria determines the President of the country, who serves as both the head of state and the head of government. The President is elected for a four-year term and can serve a maximum of two terms
                                 </p>
-                                <p className="text-gray-500 dark:text-gray-400">
-                                    Check out this guide to learn how to{" "}
-                                    <a
-                                        href="/docs/getting-started/introduction/"
-                                        className="text-blue-600 dark:text-blue-500 hover:underline"
-                                    >
-                                        get started
-                                    </a>{" "}
-                                    and start developing websites even faster with components on
-                                    top of Tailwind CSS.
-                                </p>
+                               
                             </div>
                         </div>
                         <h2 id="accordion-flush-heading-2">
@@ -122,21 +114,9 @@ const Page = () => {
                         >
                             <div className="py-5 border-b border-gray-200 dark:border-gray-700">
                                 <p className="mb-2 text-gray-500 dark:text-gray-400">
-                                    Flowbite is first conceptualized and designed using the Figma
-                                    software so everything you see in the library has a design
-                                    equivalent in our Figma file.
+                                Governorship elections are held in each of Nigeria's 36 states to elect the governor, who serves as the head of the state's executive branch. Governors are also elected for four-year terms and can serve a maximum of two terms. 
                                 </p>
-                                <p className="text-gray-500 dark:text-gray-400">
-                                    Check out the{" "}
-                                    <a
-                                        href="https://flowbite.com/figma/"
-                                        className="text-blue-600 dark:text-blue-500 hover:underline"
-                                    >
-                                        Figma design system
-                                    </a>{" "}
-                                    based on the utility classes from Tailwind CSS and components
-                                    from Flowbite.
-                                </p>
+                               
                             </div>
                         </div>
                         <h2 id="accordion-flush-heading-3">
@@ -176,39 +156,11 @@ const Page = () => {
                         >
                             <div className="py-5 border-b border-gray-200 dark:border-gray-700">
                                 <p className="mb-2 text-gray-500 dark:text-gray-400">
-                                    The main difference is that the core components from Flowbite
-                                    are open source under the MIT license, whereas Tailwind UI is
-                                    a paid product. Another difference is that Flowbite relies on
-                                    smaller and standalone components, whereas Tailwind UI offers
-                                    sections of pages.
+                                Local government elections are held to elect officials at the local government area (LGA) level. Nigeria is divided into 774 LGAs, each governed by a local council. These elections determine the chairman and councilors of the local councils.
                                 </p>
-                                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                                    However, we actually recommend using both Flowbite, Flowbite
-                                    Pro, and even Tailwind UI as there is no technical reason
-                                    stopping you from using the best of two worlds.
-                                </p>
-                                <p className="mb-2 text-gray-500 dark:text-gray-400">
-                                    Learn more about these technologies:
-                                </p>
-                                <ul className="ps-5 text-gray-500 list-disc dark:text-gray-400">
-                                    <li>
-                                        <a
-                                            href="https://flowbite.com/pro/"
-                                            className="text-blue-600 dark:text-blue-500 hover:underline"
-                                        >
-                                            Flowbite Pro
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="https://tailwindui.com/"
-                                            rel="nofollow"
-                                            className="text-blue-600 dark:text-blue-500 hover:underline"
-                                        >
-                                            Tailwind UI
-                                        </a>
-                                    </li>
-                                </ul>
+                               
+                               
+                               
                             </div>
                         </div>
                     </div>

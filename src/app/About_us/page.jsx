@@ -143,7 +143,7 @@ const page = () => {
         </div>
 
         <div className="w-full bg-white mt-14 p-5 rounded-xl">
-          <h6>Still got questions?</h6>
+          <h6 className="font-bold">Still got questions?</h6>
           <div className="flex  justify-between ">
             <p>
               Can't find the answers you are looking for? reach out to our team.
@@ -185,7 +185,7 @@ const page = () => {
             Subscribe
           </button>
         </form>
-        <p>We care about your data in our  <span className="underline text-start mt-5 ">Privacy policy</span></p>
+        <p className="mt-3">We care about your data in our  <span className="underline text-start ">Privacy policy</span></p>
       </section>
 
       <Footer/>
