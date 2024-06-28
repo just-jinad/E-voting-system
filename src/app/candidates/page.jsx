@@ -12,6 +12,7 @@ function Page() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [message, setMessage] = useState("");
+  const [votedParty, setVotedParty] = useState(null);
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("userToken"));
@@ -26,7 +27,7 @@ function Page() {
       setLoading(true);
       try {
         const response = await axios.get(
-          "https://e-voting-system-server.onrender.com/api/parties/parties",
+          "http://localhost:5000/api/parties/parties",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -35,12 +36,14 @@ function Page() {
             },
           }
         );
+        console.log(response);
         if (response.data && response.data.length > 0) {
           setParties(response.data);
         } else {
           setMessage("No Party data available");
         }
       } catch (error) {
+        console.log(error);
         console.error("Error fetching data:", error.response);
         setMessage("Error fetching data. Please try again later.");
       } finally {
@@ -50,8 +53,9 @@ function Page() {
     fetchData();
   }, []);
 
-  const voteForParty = () => {
-    // implement your voteForParty logic here
+  const voteForParty = (partyId) => {
+    setVotedParty(partyId);
+    // Add your voting logic here
   };
 
   return (
@@ -68,50 +72,41 @@ function Page() {
             {message && <p>{message}</p>}
           </div>
           {loading ? (
-            <Loader /> // Show the loader when data is being fetched
+            <Loader />
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 mb-8">
-              {parties.map((party, index) => (
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 justify-center">
+              {parties.map((party) => (
                 <div
-                  key={index}
-                  className="card relative grid h-[30rem] w-full max-w-[20rem] flex-col items-end justify-center overflow-hidden bg-clip-border text-center text-gray-700 mx-auto"
+                  key={party.id}
+                  className="card relative grid h-[30rem] w-full max-w-[20rem] flex-col items-center justify-center overflow-hidden bg-clip-border text-center text-gray-700 mx-auto"
                 >
-                  <div className="m-5 rounded-sm absolute inset-0 h-full w-full overflow-hidden bg-transparent">
-                    <div className="absolute inset-0 bg-black opacity-100"></div>{" "}
-                    {/* Black overlay */}
+                  <div className="relative h-60 w-full overflow-hidden bg-transparent">
                     <Image
                       src={party.partyPicture}
                       alt={`${party.partyPicture} image`}
                       layout="fill"
                       objectFit="cover"
                       objectPosition="center"
-                      className="rounded-lg"
+                      className="rounded-t-lg"
                     />
                   </div>
-                  <div className="relative p-6 px-6 py-14 md:px-12">
-                    <div>
-                      <Image
-                        className="top-0"
-                        width={80}
-                        height={80}
-                        src={party.partyIcon}
-                        alt="partyIcon"
-                      />
-                      <div className="mt-40 mb-6 block font-sans tracking-normal text-white">
-                        <div className="text-start">
-                          <p className="text-xl">{party.name}</p>
-                          <p>{party.description}</p>
-                          <Image
-                            onClick={voteForParty}
-                            width={50}
-                            height={50}
-                            src="/icons/vote.svg"
-                            alt="vote icon"
-                          />
-                        </div>
-                      </div>
+                  <div className="p-6 bg-white rounded-b-lg">
+                    <div className="text-start">
+                      <p className="text-xl font-semibold">{party.name}</p>
+                      <p className="text-gray-600">{party.description}</p>
                     </div>
                   </div>
+                  <button
+                    className={`mb-8 px-4 py-2 bg-gray-500 text-white-500  rounded-lg ${
+                      votedParty && votedParty !== party.id
+                        ? "opacity-50 cursor-not-allowed"
+                        : ""
+                    }`}
+                    onClick={() => voteForParty(party.id)}
+                    disabled={votedParty && votedParty !== party.id}
+                  >
+                    Vote
+                  </button>
                 </div>
               ))}
             </div>
