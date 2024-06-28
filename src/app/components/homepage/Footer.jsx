@@ -1,44 +1,49 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
   return (
-    <>
-        <div>
-            
-
-<footer className="">
-    <div className="w-full   p-4 bg-[#055052] mt-10">
-        <div className="sm:items-center">
-            <a  className="flex items-center mb-4 sm:mb-0 space-x-3 ">
-                <span className="self-center text-2xl text-white">E-ChoiceNG's</span>
+    <div className="min-h-screen flex flex-col">
+      <footer className="footer mt-auto bg-[#055052]">
+        <div className="p-4">
+          <div className="sm:items-center">
+            <a className="flex items-center mb-4 sm:mb-0 space-x-3 ">
+              <span className="self-center text-2xl text-white">
+                E-ChoiceNG's
+              </span>
             </a>
-            <div className='mt-10'>
-            <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-white">
+            <div className="mt-10">
+              <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-white">
                 <li>
-                    <a href="#" className="hover:underline me-4 md:me-6">About Us</a>
+                  <a href="#" className="hover:underline me-4 md:me-6">
+                    About Us
+                  </a>
                 </li>
                 <li>
-                    <a href="#" className="hover:underline me-4 md:me-6">Support's</a>
+                  <a href="#" className="hover:underline me-4 md:me-6">
+                    Support's
+                  </a>
                 </li>
                 <li>
-                    <a href="#" className="hover:underline me-4 md:me-6">Help</a>
+                  <a href="#" className="hover:underline me-4 md:me-6">
+                    Help
+                  </a>
                 </li>
                 <li>
-                    <a href="#" className="hover:underline">Privacy</a>
+                  <a href="#" className="hover:underline">
+                    Privacy
+                  </a>
                 </li>
-            </ul>
+              </ul>
             </div>
-           
+          </div>
+          <hr className="text-[#7F56D9] bg-[#7F56D9] my-6 " />
+          <span className="block text-sm text-gray-500 dark:text-gray-400">
+            © 2024 E-ChoiceNG's. All Rights Reserved.
+          </span>
         </div>
-        <hr className="text-[#7F56D9] bg-[#7F56D9] my-6 " />
-        <span className="block text-sm text-gray-500 dark:text-gray-400">© 2024 E-ChoiceNG's. All Rights Reserved.</span>
+      </footer>
     </div>
-</footer>
+  );
+};
 
-
-        </div>
-    </>
-  )
-}
-
-export default Footer
+export default Footer;
