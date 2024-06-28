@@ -4,11 +4,25 @@ import React, { useState } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const isLoggedIn = !!localStorage.getItem("userToken");
 
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleLogout = async () => {
+    setLoading(true);
+    try {
+      localStorage.removeItem("userToken");
+      localStorage.removeItem("userDetails");
+      window.location.href = "/";
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <nav className="bg-white border-gray-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -64,26 +78,22 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a
-                href="/"
-                className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-                onClick={(e) => {
-                  e.preventDefault();
-                  localStorage.removeItem("userToken");
-                  window.location.href = "/";
-                }}
-              >
-                Log Out
-              </a>
-            </li>
-            <li>
-              {localStorage.getItem("userDetails") ? (
-                <p className="block py-2 px-3 rounded md:p-1 text-white bg-[#055052] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">
-                  Welcome,{" "}
-                  {JSON.parse(localStorage.getItem("userDetails")).fullName}!
-                </p>
+              {isLoggedIn ? (
+                <div className="flex items-center">
+                  <a
+                    href="/"
+                    className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                    onClick={handleLogout}
+                  >
+                    {loading ? "Logging out..." : "Log Out"}
+                  </a>
+                  <p className="block ms-4 py-2 px-3 rounded md:p-1 text-dark-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">
+                    Welcome,{" "}
+                    {JSON.parse(localStorage.getItem("userDetails")).fullName}!
+                  </p>
+                </div>
               ) : (
-                <Link href="/registration">
+                <Link href="/login">
                   <p className="block py-2 px-3 rounded md:p-1 text-white bg-[#055052] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">
                     Log In
                   </p>
