@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import Navbar from '../components/homepage/Navbar';
 import Image from 'next/image';
 import Footer from '../components/homepage/Footer';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
   const url = "https://e-voting-system-server.onrender.com/api/parties/parties";
@@ -28,6 +29,11 @@ const Page = () => {
 
     fetchData();
   }, []);
+const router = useRouter()
+  const voteForCandidate =()=>{
+    router.push("/candidates/success")
+
+  }
 
   const candidatesList = [
     
@@ -57,7 +63,7 @@ const Page = () => {
           description: "Founded in 2002, APGA focuses on nationalism, decentralization of power, and restructuring the nation, especially influential in southeastern Nigeria.",
           candidate: "Peter Umeadi",
           image:"",
-          icon:""
+          icon:"/apga.png"
         },
         {
           name: "Social Democratic Party (SDP)",
@@ -159,7 +165,7 @@ const Page = () => {
                       <div className='text-start'>
                         <p className='text-xl'>{details.candidate}</p>
                         <p>{details.name}</p>
-                        <Image width={50} height={50} src="/icons/vote.svg" alt="vote icon" />
+                        <Image onClick={voteForCandidate} width={50} height={50} src="/icons/vote.svg" alt="vote icon" />
                       </div>
                     </div>
                   </div>
