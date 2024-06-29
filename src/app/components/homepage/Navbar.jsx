@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const isLoggedIn = !!localStorage.getItem("userToken");
+  const isLoggedIn = localStorage.getItem("userToken");
 
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,6 +16,7 @@ const Navbar = () => {
     try {
       localStorage.removeItem("userToken");
       localStorage.removeItem("userDetails");
+      localStorage.removeItem("votedParty");
       window.location.href = "/";
     } catch (error) {
       console.error(error);
