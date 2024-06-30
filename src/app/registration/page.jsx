@@ -18,7 +18,7 @@ const Page = () => {
 
     <div className="m-1 relative ">
     <div>
-    <p className='text-4xl font-semibold text-center'>Sign in</p>
+    <p className='text-4xl font-semibold text-dark text-center'>Sign in</p>
     </div>
     <br />
     <div>
