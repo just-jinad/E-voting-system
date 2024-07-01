@@ -1,14 +1,16 @@
 "use client";
-import axios from 'axios';
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import axios from "axios";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Loader from "@/loader/loader"; // Import the Loader component
+import { toast } from "react-toastify";
 
+// const url = "http://localhost:5000/api/users/login";
 const url = "https://e-voting-system-server.onrender.com/api/users/login";
-
 const Page = () => {
-  const [voterId, setVoterId] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [voterId, setVoterId] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleInputChange = (e) => {
@@ -16,47 +18,73 @@ const Page = () => {
   };
 
   const handleSubmit = () => {
-    axios.post(url, { voterID:voterId })
+    setLoading(true);
+    axios
+      .post(url, { voterID: voterId })
       .then((response) => {
-        console.log(response);
-        setErrorMessage(''); // Clear error message on successful response
-        setSuccessMessage('Login successful!'); // Set success message
+        const token = response.data.token;
+        const user = response.data.user;
+        localStorage.setItem("userToken", JSON.stringify(token));
+        localStorage.setItem("userDetails", JSON.stringify(user));
+        toast.success("Signed in successful", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+        });
+        // setMessage("Login successful!"); // Set success message
+        setLoading(false); // Hide loader
         setTimeout(() => {
-          router.push('/votingpanel'); // Route to /candidates on successful login
-        }, 1000); // Delay to show success message
+          router.push("/votingpanel"); // Route to /candidates on successful login
+        }, 3000); // Delay to show success message
       })
       .catch((err) => {
         console.log(err);
-        setSuccessMessage(''); // Clear success message on error
-        setErrorMessage('Invalid ID details: ' + (err.response?.data?.message || 'Number must be 11 digits'));
+        setLoading(false); // Hide loader
+        setMessage(
+          "Invalid ID details: " +
+            (err.response?.data?.message || "Number must be 11 digits")
+        );
       });
   };
-
   return (
     <>
       <div>
-        <div className='p-5'>
-          <p className='text-[#2A9D8F] text-3xl'>E-ChoiceNG</p>
+        <div className="p-5">
+          <p className="text-[#2A9D8F] text-3xl">E-ChoiceNG</p>
         </div>
-        <div className='md:w-2/6 p-5 mx-auto mt-20'>
-          <div className='text-center'>
-            <p className='text-4xl'>Voter’s Id</p>
+        <div className="md:w-2/6 p-5 mx-auto mt-20">
+          <div className="text-center">
+            <p className="text-4xl">Voter’s Id</p>
             <p>Welcome back! Please enter your Voter ID.</p>
           </div>
-          <br />
+          {message && (
+            <p
+              className={
+                message.includes("Login successful!")
+                  ? "text-green-500 text-center text-2xl mt-3"
+                  : "text-red-500 text-center text-2xl mt-3"
+              }
+            >
+              {message}
+            </p>
+          )}
+          {loading && <Loader />} {/* Show loader if loading */}
           <div>
             <div className="mb-6">
-              <label htmlFor="large-input" className="block mb-2 text-sm font-medium">Voter Id</label>
+              <label
+                htmlFor="large-input"
+                className="block mb-2 text-sm font-medium"
+              >
+                Voter Id
+              </label>
               <input
                 type="text"
-                placeholder='e.g 11111011110'
+                placeholder="e.g 11111011110"
                 id="large-input"
                 className="block w-full p-3 border border-gray-300 rounded-lg text-base focus:ring-blue-500 focus:border-blue-500"
                 value={voterId}
                 onChange={handleInputChange}
               />
-              {errorMessage && <p className='text-red-500 pt-2'>{errorMessage}</p>}
-              {successMessage && <p className='text-green-500 pt-2'>{successMessage}</p>}
             </div>
             <button
               type="button"
