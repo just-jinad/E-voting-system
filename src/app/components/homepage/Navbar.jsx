@@ -94,7 +94,7 @@ const Navbar = () => {
                   </p>
                 </div>
               ) : (
-                <Link href="/login">
+                <Link href="/nin">
                   <p className="block py-2 px-3 rounded md:p-1 text-white bg-[#055052] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">
                     Log In
                   </p>
