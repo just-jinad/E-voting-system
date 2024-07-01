@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { useState } from 'react';
+import { toast } from "react-toastify";
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +9,14 @@ const Page = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const fingerprint =()=>{
+    // alert("This feature is currently unavailable")
+    toast.error("This feature is still under maintenance", {
+      position: "top-center",
+      hideProgressBar: true,
+    })
+  }
 
   return (
     <>
@@ -62,6 +71,13 @@ const Page = () => {
           Voters Card Id
         </Link>
        
+        <Link
+        onClick={fingerprint}
+          className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm focus:outline-none focus:bg-gray-100 "
+          href="/registration"
+        >
+          Finger Print <i class="fas fa-fingerprint    "></i>
+        </Link>
       </div>
       </div>
     </div>

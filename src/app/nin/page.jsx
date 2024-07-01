@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Loader from "@/loader/loader"; // Import the Loader component
+import { toast } from "react-toastify";
 
 // const url = "http://localhost:5000/api/users/login";
 const url = "https://e-voting-system-server.onrender.com/api/users/login";
@@ -27,11 +28,17 @@ const Page = () => {
         const user = response.data.user;
         localStorage.setItem("userToken", JSON.stringify(token));
         localStorage.setItem("userDetails", JSON.stringify(user));
-        setMessage("Login successful!"); // Set success message
+        toast.success("Signed in successful",{
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+
+        })
+        // setMessage("Login successful!"); // Set success message
         setLoading(false); // Hide loader
         setTimeout(() => {
           router.push("/votingpanel"); // Route to /candidates on successful login
-        }, 1000); // Delay to show success message
+        }, 3000); // Delay to show success message
       })
       .catch((err) => {
         console.log(err);
@@ -51,8 +58,8 @@ const Page = () => {
         </div>
         <div className="md:w-2/6 p-5 mx-auto mt-20">
           <div className="text-center">
-            <p className="text-4xl">NiN</p>
-            <p>Welcome back! Please enter your NiN details.</p>
+            <p className="text-4xl">NIN</p>
+            <p>Welcome back! Please enter your NIN details.</p>
           </div>
           {message && (
             <p
