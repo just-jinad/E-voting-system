@@ -27,14 +27,14 @@ const Page = () => {
 
     <div className="m-1 relative ">
     <div>
-    <p className='text-4xl font-semibold text-dark text-center'>Sign in</p>
+    <p className='text-4xl font-semibold text-black text-center'>Vote Now</p>
     </div>
     <br />
     <div>
       <button
         id="hs-dropdown-hover-event"
         type="button"
-        className="w-full hs-dropdown-toggle py-3 justify-center px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+        className="w-full hs-dropdown-toggle text-black py-3 justify-center px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
         onClick={toggleDropdown}
       >
         Identification Method
@@ -68,7 +68,7 @@ const Page = () => {
           className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm focus:outline-none focus:bg-gray-100 "
           href="/votersid"
         >
-          Voters Card Id
+          Voters Card 
         </Link>
        
         <Link

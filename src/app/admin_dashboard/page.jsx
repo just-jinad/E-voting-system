@@ -37,15 +37,15 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto p-4 border-2 rounded-xl">
+      <div className="container mx-auto p-4 border-2 rounded-xl mt-20">
         {loading ? (
           <div className="text-center">
             <Loader />
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-white">
-              <thead>
+            <table className="w-full bg-white  text-sm text-left rtl:text-right text-gray-500">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                   <th className="py-2 px-4">Candidate</th>
                   <th className="py-2 px-4">Party</th>
@@ -56,9 +56,7 @@ const Page = () => {
                 {voteData &&
                   voteData.map((party, index) => (
                     <tr key={index} className="border-t">
-                      <td className="py-2 px-4">
-                        {/* <Image src={party.partyPicture} /> */}
-                      </td>
+                    
                       <td className="py-2 px-4">{party.candidate}</td>
                       <td className="py-2 px-4">{party.name}</td>
                       <td className="py-2 px-4">{party.votes}</td>

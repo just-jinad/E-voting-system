@@ -28,11 +28,9 @@ const Page = () => {
         const user = response.data.user;
         localStorage.setItem("userToken", JSON.stringify(token));
         localStorage.setItem("userDetails", JSON.stringify(user));
-        toast.success("Signed in successful",{
-          position: "top-center",
-          autoClose: 5000,
+        toast.success("ID confirmed successfully", {
+          position:'top-center',
           hideProgressBar: false,
-
         })
         // setMessage("Login successful!"); // Set success message
         setLoading(false); // Hide loader
@@ -42,7 +40,11 @@ const Page = () => {
       })
       .catch((err) => {
         console.log(err);
-        setLoading(false); // Hide loader
+        setLoading(false); 
+        toast.error( "Invalid ID details ", {
+            position:'top-center',
+            
+          })
         setMessage(
           "Invalid ID details: " +
             (err.response?.data?.message || "Number must be 11 digits")
@@ -59,7 +61,7 @@ const Page = () => {
         <div className="md:w-2/6 p-5 mx-auto mt-20">
           <div className="text-center">
             <p className="text-4xl">NIN</p>
-            <p>Welcome back! Please enter your NIN details.</p>
+            <p> Please enter your NIN details.</p>
           </div>
           {message && (
             <p
@@ -75,17 +77,17 @@ const Page = () => {
           {loading && <Loader />} {/* Show loader if loading */}
           <div>
             <div className="mt-5">
-              <label
+              {/* <label
                 htmlFor="large-input"
                 className="block mb-2 text-sm font-medium"
               >
                 NIN Number
-              </label>
+              </label> */}
               <input
                 type="text"
                 placeholder="e.g 11111011110"
                 id="large-input"
-                className="block w-full p-3 border border-gray-300 rounded-lg text-base focus:ring-blue-500 focus:border-blue-500"
+                className="block w-full p-3 border border-gray-300 rounded-lg text-base "
                 value={nin}
                 onChange={handleInputChange}
                 disabled={loading} // Disable input when loading
@@ -93,11 +95,11 @@ const Page = () => {
             </div>
             <button
               type="button"
-              className="w-full mt-5 focus:outline-none text-white bg-[#004652] hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
+              className="w-full mt-5 focus:outline-none text-white bg-[#004652] hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
               onClick={handleSubmit}
               disabled={loading} // Disable button when loading
             >
-              Sign in
+              Confirm NIN
             </button>
           </div>
         </div>

@@ -164,7 +164,7 @@ function Page() {
           )}
           <div className="text-center mt-10">
             <button
-              className="bg-blue-500 text-white mb-10 px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+              className="bg-green-800 text-white mb-10 px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300"
               onClick={() => router.push("/admin_dashboard")}
             >
               View Votes
