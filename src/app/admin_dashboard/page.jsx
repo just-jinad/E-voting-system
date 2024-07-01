@@ -15,7 +15,7 @@ const Page = () => {
       const token = JSON.parse(localStorage.getItem("userToken")) || null;
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/parties/parties",
+          "https://e-voting-system-server.onrender.com/api/parties/parties",
           {
             headers: {
               Authorization: `Bearer ${token}`, // Send the token in the Authorization header
@@ -53,16 +53,17 @@ const Page = () => {
                 </tr>
               </thead>
               <tbody>
-                {voteData.map((party, index) => (
-                  <tr key={index} className="border-t">
-                    <td className="py-2 px-4">
-                      {/* <Image src={party.partyPicture} /> */}
-                    </td>
-                    <td className="py-2 px-4">{party.candidate}</td>
-                    <td className="py-2 px-4">{party.name}</td>
-                    <td className="py-2 px-4">{party.votes}</td>
-                  </tr>
-                ))}
+                {voteData &&
+                  voteData.map((party, index) => (
+                    <tr key={index} className="border-t">
+                      <td className="py-2 px-4">
+                        {/* <Image src={party.partyPicture} /> */}
+                      </td>
+                      <td className="py-2 px-4">{party.candidate}</td>
+                      <td className="py-2 px-4">{party.name}</td>
+                      <td className="py-2 px-4">{party.votes}</td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

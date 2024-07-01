@@ -8,17 +8,17 @@ const page = () => {
   return (
     <>
       <Navbar />
-      <section className="text-center mt-10 p-4">
-        <h6 className="font-bold text-dark text-sm">FAQs</h6>
-        <h2 className="font-bold text-dark text-2xl">Ask us anything</h2>
-        <p className="text-sm">
+      <section className="text-center text-black mt-10 p-4">
+        <h6 className="font-bold text-black text-sm ">FAQs</h6>
+        <h2 className="font-bold text-black text-2xl ">Ask us anything</h2>
+        <p className="text-sm text-black">
           Need something created up? Here are our frequently asked questions
         </p>
 
         <form class="max-w-md mx-auto mt-10">
           <label
             for="default-search"
-            class="mb-2 text-sm font-medium sr-only dark:text-white"
+            class="mb-2 text-sm text-black font-medium sr-only dark:text-white"
           >
             Search
           </label>
@@ -64,10 +64,10 @@ const page = () => {
               width={20}
               height={20}
               />
-              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+              <h5 className="mb-2 text-black mt-2 text-2xl font-bold tracking-tight">
                 What are the requirements for winning the presidential election?
               </h5>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-black  dark:text-gray-400">
                 Majority of votes nationwide. At least 25% of votes in
                 two-thirds of the states and the FCT.
               </p>
@@ -85,10 +85,10 @@ const page = () => {
               width={20}
               height={20}
               />
-              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+              <h5 className="mb-2 text-black mt-2 text-2xl font-bold tracking-tight">
                 How often are governorship elections held?
               </h5>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-black  dark:text-gray-400">
                 Every four years.
               </p>
             </a>
@@ -105,10 +105,10 @@ const page = () => {
               width={20}
               height={20}
               />
-              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+              <h5 className="mb-2 text-black mt-2 text-2xl font-bold tracking-tight">
                 What is the role of INEC?{" "}
               </h5>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-black  dark:text-gray-400">
                 Organizes federal and state elections. Maintains voter registers
                 and regulates political parties.
               </p>
@@ -126,10 +126,10 @@ const page = () => {
               width={20}
               height={20}
               />
-              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+              <h5 className="mb-2 mt-2 text-black text-2xl font-bold tracking-tight">
                 What are the main election challenges in Nigeria?{" "}
               </h5>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-black  dark:text-gray-400">
                 Electoral violence, logistics, fraud. Addressed by security
                 measures, logistical improvements, stricter laws.
               </p>
@@ -147,10 +147,10 @@ const page = () => {
               width={20}
               height={20}
               />
-              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+              <h5 className="mb-2 mt-2 text-black text-2xl font-bold tracking-tight">
                 How are local government elections conducted?{" "}
               </h5>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-black  dark:text-gray-400">
                 State commissions manage elections. Parties select candidates;
                 simple majority voting.
               </p>
@@ -168,10 +168,10 @@ const page = () => {
               width={20}
               height={20}
               />
-              <h5 className="mb-2 mt-2 text-2xl font-bold tracking-tight">
+              <h5 className="mb-2 mt-2 text-2xl text-black font-bold tracking-tight">
                 What measures ensure election credibility?{" "}
               </h5>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-black dark:text-gray-400">
                 Electronic voting, biometric verification, election observers,
                 voter education.
               </p>
@@ -180,8 +180,8 @@ const page = () => {
         </div>
 
         <div className="w-full bg-white mt-14 p-5 rounded-xl">
-          <h6 className="font-bold">Still got questions?</h6>
-          <div className="flex  justify-between ">
+          <h6 className="font-bold text-black">Still got questions?</h6>
+          <div className="flex text-black justify-between ">
             <p>
               Can't find the answers you are looking for? reach out to our team.
             </p>
@@ -193,7 +193,7 @@ const page = () => {
       </section>
 
       <section className="bg-blue-50 mt-10 py-5 px-5 text-center mb-14">
-        <h2 className="font-bold text-dark text-2xl mb-3">
+        <h2 className="font-bold text-black text-2xl mb-3">
           Sign up for our news letter
         </h2>
         <p className="text-sm mb-3">

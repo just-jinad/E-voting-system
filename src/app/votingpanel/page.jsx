@@ -21,8 +21,10 @@ const Page = () => {
       <Navbar />
       <div className=" mr-12 ml-12 h-screen">
         <div className="mb-5 mt-20">
-          <h3 className="font-bold text-xl text-start">Available Elections</h3>
-          <p className="text-sm text-start">
+          <h3 className="font-bold text-xl text-start text-black">
+            Available Elections
+          </h3>
+          <p className="text-sm text-black text-start">
             This are Currently the Lists of Available Elections
           </p>
         </div>
@@ -96,7 +98,7 @@ const Page = () => {
                   {" "}
                   <div className="flex justify-between gap-3">
                     <p className="text-xl ">Upcoming Election</p>
-                    <p className="text-sm mt-2 text-yellow-500">Governorship</p>
+                    <p className="text-sm mt-2 text-yellow-600">Governorship</p>
                   </div>{" "}
                 </span>
                 <svg
@@ -144,7 +146,7 @@ const Page = () => {
                   {" "}
                   <div className="flex justify-between gap-3">
                     <p className="text-xl ">Upcoming Election</p>
-                    <p className="text-sm mt-2 text-yellow-500">
+                    <p className="text-sm mt-2 text-yellow-600">
                       Local Government
                     </p>
                   </div>{" "}
