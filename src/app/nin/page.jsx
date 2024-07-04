@@ -56,7 +56,7 @@ const Page = () => {
     <>
       <div>
         <div className="p-5">
-          <p className="text-[#2A9D8F] text-3xl">E-ChoiceNG</p>
+          <p className="text-[#055052] text-3xl">E-ChoiceNG</p>
         </div>
         <div className="md:w-2/6 p-5 mx-auto mt-20">
           <div className="text-center">

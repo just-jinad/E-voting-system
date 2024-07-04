@@ -39,7 +39,7 @@ const Navbar = () => {
       <nav className="bg-white shadow-lg">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <span className="self-center text-2xl font-bold text-[#055052]">
+            <span className="self-center text-2xl text-[#055052]">
               E-ChoiceNG's
             </span>
           </a>
